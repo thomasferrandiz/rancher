@@ -134,6 +134,7 @@ func (h *handler) getArgsEnvAndStatus(infra *infraObject, args map[string]interf
 		filesSecret = constructFilesSecret(driver, args)
 		cmd = append(cmd, toArgs(driver, args, rancherCluster.Status.ClusterName)...)
 	} else {
+		filesSecret = constructFilesSecret(driver, args)
 		cmd = append(cmd, "rm", "-y")
 		jobBackoffLimit = 3
 	}
